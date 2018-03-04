@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by type reflection 1`] = `"Side effect TraceableWithBadEffectType._bad_effect_0 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by type reflection 2`] = `"Side effect TraceableWithBadEffectType._bad_effect_1 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by type reflection 3`] = `"Side effect TraceableWithBadEffectType._bad_effect_2 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by type reflection 4`] = `"Side effect TraceableWithBadEffectType._bad_effect_3 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by value 1`] = `"Side effect TraceableWithBadEffectValue._bad_effect_0 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by value 2`] = `"Side effect TraceableWithBadEffectValue._bad_effect_1 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by value 3`] = `"Side effect TraceableWithBadEffectValue._bad_effect_2 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error for effects that are not of type Observable by value 4`] = `"Side effect TraceableWithBadEffectValue._bad_effect_3 is not an Observable"`;
+
+exports[`Traceable @Effect should throw an error if not being used in a traceable prototype (inherit from StateTraceable or using @Traceable decorator) 1`] = `"You can't use @Effect decorator in a non traceable prototype"`;
+
+exports[`Traceable @Effect should throw an error if not being used in a traceable prototype (inherit from StateTraceable or using @Traceable decorator) 2`] = `"You can't use @Effect decorator in a non traceable prototype"`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 1`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 1000,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 2`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 1,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 3`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 2,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 4`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 3,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 5`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 5,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 6`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 8,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 7`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 13,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 8`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 21,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 9`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 34,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should dispatch new state when it changes automatically by an action through an effect 10`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 55,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should update state for a new manually performed action 1`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 1,
+    },
+  },
+}
+`;
+
+exports[`Traceable State should update state for a new manually performed action 2`] = `
+Object {
+  "lvl0": Object {
+    "data": 200,
+    "lvl1": Object {
+      "data": 1,
+    },
+  },
+}
+`;
+
+exports[`Traceable State snapshot should have initialized snapshot by object creation 1`] = `
+Object {
+  "lvl0": Object {
+    "data": 0,
+    "lvl1": Object {
+      "data": 1,
+    },
+  },
+}
+`;

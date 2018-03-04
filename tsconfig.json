@@ -9,8 +9,10 @@
       "esnext"
     ],
     "types": [
+      "jest",
       "node",
-      "lodash"
+      "lodash",
+      "reflect-metadata"
     ],
     "paths": {
       "@lib/*": [
