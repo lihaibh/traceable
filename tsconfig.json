@@ -21,18 +21,17 @@
     },
     "module": "commonjs",
     "moduleResolution": "node",
-    "inlineSources": true,
-    "inlineSourceMap": true,
+    "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": false,
+    "declaration": true,
     "outDir": "build",
     "typeRoots": [
       "node_modules/@types"
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts"
   ],
   "files": [
     "src/index.ts"
