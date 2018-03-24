@@ -35,13 +35,14 @@ in order to use decorators in Typescript you should enable experimentalDecorator
 }
 ```
 
+Create a person object and track it's state:
 ```ts
-// declare what state we wish to trace
+// declare what state you wish to trace
 interface PersonData {
     age: string;
 }
 
-// declare which actions we can do to change that state
+// declare which actions you can do to change that state
 interface PersonOlderAction extends Action {
     type = 'older';
 
@@ -70,7 +71,7 @@ function initialize() {
     }
 }
 
-// Here we bind the state and actions to the prototype
+// Here we bind the state and actions to the Person prototype
 @Traceable<PersonData, PersonActions>({
     reduce: reducer,
     initialize: initialize
@@ -78,6 +79,7 @@ function initialize() {
 class Person {
     ....
     older() {
+        // Basically we can trigger actions where we want to
         this.act(new PersonOlderAction());
     }
 }
