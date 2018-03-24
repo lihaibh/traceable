@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Lihai Ben-Haim <lihaibh@gmail.com>",
   "_moduleAliases": {
-    "@app": "./src"
+    "@lib": "./src"
   },
   "bugs": {
     "url": "https://github.com/lihaibh/traceable/issues"
