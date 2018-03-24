@@ -1,17 +1,37 @@
 # Traceable
-Inspired by [@ngrx/platform] for Angular applications, this library allows you to decorate any prototype with a functionality to track objects state created from it using Reactive Extension observables, see [ReactiveX/rxjs].
+Inspired by [@ngrx/platform](https://github.com/ngrx/platform) for Angular applications, this library allows you to decorate any prototype / class with a functionality to track object states created from it as an event stream using Reactive Extension observables, see [ReactiveX/rxjs](https://github.com/ReactiveX/rxjs).
 It's also possible to create side effects in the prototype level that runs automatically when the state of an object has changed or we're trying to make some actions on it.
 
 ## Setup
-Install rxjs to use Observable interface:
+Please make sure to install rxjs first in order to use Observable interface:
 
 ```
 npm i rxjs --save
 ```
 
+Install our library:
+
+```
+npm i traceable-object
+```
+
 ## Usage
-Some examples are listed in src/_examples, you can check them out and run them.
+Check out our pre maid [Examples](./src/_examples) to get sense of how to use this library properly.
+
 using Traceable decorator:
+
+the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/types.ts) so when an object of this prototype is created, you can track its changes.
+
+in order to use decorators in Typescript you should enable experimentalDecorators compiler option in your tsconfig.json file like so:
+
+```json
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "experimentalDecorators": true
+    }
+}
+```
 
 ```ts
 // declare what state we wish to trace
@@ -27,31 +47,33 @@ interface PersonOlderAction extends Action {
     }
 }
 
+type PersonActions = PersonOlderAction; // You can add as much actions as you like with the operator pipe "|"
+
 // declare function that change a state by a given action
-function reducer(action: PersonOlderAction, previous_state: PersonData) {
+function reducer(action: PersonActions, previous_state: PersonData) {
     // We have new incoming action, and we decide which next state the object should have
     if (action.type === 'older') {
         return {
-            age: previous_state.age++
+            age: previous_state.age + 1
         };
     }
 
     return previous_state;
 }
 
-// declare initialize function so every person will have initial state
+// declare initialization function so every person will have an initial state
 function initialize() {
     return {
         age: 0
     }
 }
 
-// Here we bind the state and actions
-@Traceable<PersonData, PersonOlderAction>({
+// Here we bind the state and actions to the prototype
+@Traceable<PersonData, PersonActions>({
     reduce: reducer,
     initialize: initialize
 })
-class Person() {
+class Person {
     ....
     older() {
         this.act(new PersonOlderAction());
@@ -61,10 +83,14 @@ class Person() {
 let person = new Person();
 
 // Traceable decorator adds functions that were not exist in the original Person prototype
+// Check the interface @Traceable<STATE, ACTIONS>
+// Here we are listening to be notified when the 'age' field of the person is changed
 let personAge = person.state$('age');
 
-personAge.subscribe(console.log);
-// will print 0 than 1
+personAge.subscribe(console.log); // when the age of the person is changed, it will be printed out
 
-person.older();
+person.older(); // Will cause the age field in person to be increased
+
+// We can also run action on person directly
+person.act(new PersonOlderAction());
 ```
