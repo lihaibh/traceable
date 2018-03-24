@@ -1,26 +1,28 @@
 # Traceable
+
 Inspired by [@ngrx/platform](https://github.com/ngrx/platform) for Angular applications, this library allows you to decorate any prototype / class with a functionality to track object states created from it as an event stream using Reactive Extension observables, see [ReactiveX/rxjs](https://github.com/ReactiveX/rxjs).
 It's also possible to create side effects in the prototype level that runs automatically when the state of an object has changed or we're trying to make some actions on it.
 
 ## Setup
+
 Please make sure to install rxjs first in order to use Observable interface:
 
-```
+```sh
 npm i rxjs --save
 ```
 
 Install our library:
 
-```
+```sh
 npm i traceable-object
 ```
 
 ## Usage
+
 Check out our pre maid [Examples](./src/_examples) to get sense of how to use this library properly.
 
 using Traceable decorator:
-
-the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/types.ts) so when an object of this prototype is created, you can track its changes.
+the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/types.ts)) so when an object of this prototype is created, you can track its changes.
 
 in order to use decorators in Typescript you should enable experimentalDecorators compiler option in your tsconfig.json file like so:
 
