@@ -95,7 +95,7 @@ function _isTraceable(target: any): boolean {
         return true;
     } else {
         // In order to avoid circular dependencies - require the module on runtime
-        const StateTraceable = require('@app/core/traceable/state-traceable').StateTraceable;
+        const StateTraceable = require('@lib/state-traceable').StateTraceable;
         return isPrototypeOf(StateTraceable, prototype) ||
             Reflect.hasMetadata(TRACEABLE_META_HOOK, constructor);
     }
