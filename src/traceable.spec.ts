@@ -70,7 +70,7 @@ describe('Traceable', () => {
 
             // spy reduce to check number of calls to it
             const stub_reducer = stub(Dummy.prototype, 'reduce' as any);
-            stub_reducer.callsFake(function () {
+            stub_reducer.callsFake(function() {
                 return original_reducer.apply(this, arguments);
             });
 
@@ -242,11 +242,11 @@ describe('Traceable', () => {
 
                 // Mock and spy functions
                 const effectTester = stub(_effect_module, 'Effect');
-                effectTester.callsFake(function () {
+                effectTester.callsFake(function() {
                     const _original_property_decorator =
                         originalEffectFactory.apply(this, arguments);
 
-                    return function (): PropertyDecorator {
+                    return function(): PropertyDecorator {
                         return _original_property_decorator.apply(this, arguments);
                     };
                 });
