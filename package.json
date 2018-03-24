@@ -84,7 +84,11 @@
     "commit": "git-cz",
     "commitlint": "commitlint",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "npm test -- --coverage",
+    "jest": "jest",
+    "test": "npm run jest -- --verbose",
+    "test.inspect": "node --inspect-brk=0 ./node_modules/jest/bin/jest.js --no-cache --runInBand",
+    "test.watch": "npm test -- --watch"
   },
   "types": "./dist/main.d.ts"
 }
