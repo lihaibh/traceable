@@ -4,9 +4,10 @@ import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/bufferCount';
 import 'rxjs/add/operator/skip';
 
+import { Action } from '@lib/contracts/action';
+import { Traceable as ITraceable } from '@lib/contracts/traceable';
 import { Effect } from '@lib/effect-decorator';
 import { Traceable } from '@lib/traceable-decorator';
-import { Action, Traceable as ITraceable } from '@lib/types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 

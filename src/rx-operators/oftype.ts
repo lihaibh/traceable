@@ -1,4 +1,4 @@
-import { Action } from '@lib/types';
+import { Action } from '@lib/contracts/action';
 import * as R from 'ramda';
 import { Observable } from 'rxjs/Observable';
 

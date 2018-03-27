@@ -1,7 +1,8 @@
+import { Action } from '@lib/contracts/action';
+import { Reducer } from '@lib/contracts/reducer';
 import { Effect, getEffects } from '@lib/effect-decorator';
 import { EFFECTS_META_KEY, SUBSCRIPTIONS_META_KEY, TRACEABLE_META_HOOK } from '@lib/meta';
 import { StateTraceable } from '@lib/state-traceable';
-import { Action, Reducer } from '@lib/types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 import { isArray } from 'util';

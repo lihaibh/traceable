@@ -1,10 +1,10 @@
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/switchMapTo';
 
+import { Action } from '@lib/contracts/action';
 import { Effect } from '@lib/effect-decorator';
 import ofType from '@lib/rx-operators/oftype';
 import { StateTraceable } from '@lib/state-traceable';
-import { Action } from '@lib/types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 

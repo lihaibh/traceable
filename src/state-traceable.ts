@@ -5,8 +5,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/multicast';
 import 'rxjs/add/operator/take';
 
+import { Action } from '@lib/contracts/action';
+import { Location } from '@lib/contracts/location';
+import { Traceable } from '@lib/contracts/traceable';
+import { Transformer } from '@lib/contracts/transformer';
 import { Effect, getEffects } from '@lib/effect-decorator';
-import { Action, Location, Traceable, Transformer } from '@lib/types';
 import { equals, isFunction, isObservable, path } from '@lib/utils/common';
 import { selectOperator as select } from '@lib/utils/rx-operators/select';
 import * as _ from 'lodash';
