@@ -19,7 +19,7 @@ npm i traceable-object
 
 ## Usage
 
-Check out our pre maid [Examples](./src/_examples) to get sense of how to use this library properly.
+Check out our pre maid [Examples](./examples) to get sense of how to use this library properly.
 
 using Traceable decorator:
 the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/types.ts)) so when an object of this prototype is created, you can track its changes.
