@@ -1,15 +1,11 @@
 # Traceable
 
-Inspired by [@ngrx/platform](https://github.com/ngrx/platform) for Angular applications, this library allows you to decorate any prototype / class with a functionality to track object states created from it as an event stream using Reactive Extension observables, see [ReactiveX/rxjs](https://github.com/ReactiveX/rxjs).
+Inspired by [@ngrx/platform](https://github.com/ngrx/platform) for [Angular](https://github.com/angular/angular) applications, this library allows you to decorate any prototype / class with a functionality to track object states created from it as an event stream using Reactive Extension observables, see [ReactiveX/rxjs](https://github.com/ReactiveX/rxjs).
 It's also possible to create side effects in the prototype level that runs automatically when the state of an object has changed or we're trying to make some actions on it.
 
 ## Setup
 
-Please make sure to install rxjs first in order to use Observable interface:
-
-```sh
-npm i rxjs --save
-```
+Please make sure you know what reactive programming means and you are familiar with the [rxjs library](https://github.com/ReactiveX/rxjs) first in order to use the Observable interface:
 
 Install our library:
 
