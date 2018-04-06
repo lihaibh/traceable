@@ -19,31 +19,48 @@ export function Effect(): PropertyDecorator {
         // According the docs, target wil be a constructor for static members or prototype for instance members
         const original_target = target;
         const original_constructor = _getConstructor(target);
-        const effect_is_static = _isConstructor(target);
 
-        // Validate whether we are in a traceable class type
-        if (!_isTraceable(original_target)) {
-            throw new TypeError('You can\'t use @Effect decorator in a non traceable prototype');
-        }
-
-        // Validate Effect
-        if (!_isEffectObservable(original_target, effect)) {
-            throw new TypeError(`Side effect ${original_constructor.name}.${effect} is not an Observable`);
-        }
+        // Validations
+        _validateTraceable(original_target);
+        _validateEffect(original_target, effect);
 
         // Add the effect as a key to the target
         _addEffect(original_target, effect);
 
-        if (effect_is_static) {
-            // Run static effect
-            _addSubscription(
-                // Static members should be invoked as soon as they are initialized
-                original_target,
-                // Create a subscription (which activates the effect instantly)
-                prop(effect as never, original_constructor).subscribe(noop),
-            );
-        }
+        // Run effect if it's a static member
+        _addSubscriptionForStaticEffect(original_target, effect);
     };
+}
+
+function _validateTraceable(target) {
+    // Validate whether we are in a traceable class type
+    if (!_isTraceable(target)) {
+        throw new TypeError('You can\'t use @Effect decorator in a non traceable prototype');
+    }
+}
+
+function _validateEffect(target, effect) {
+    const constructor = _getConstructor(target);
+
+    // Validate Effect
+    if (!_isEffectObservable(target, effect)) {
+        throw new TypeError(`Side effect ${constructor.name}.${effect} is not an Observable`);
+    }
+}
+
+function _addSubscriptionForStaticEffect(target, effect) {
+    const constructor = _getConstructor(target);
+    const effect_is_static = _isConstructor(target);
+
+    if (effect_is_static) {
+        // Run static effect
+        _addSubscription(
+            // Static members should be invoked as soon as they are initialized
+            target,
+            // Create a subscription (which activates the effect instantly)
+            prop(effect as never, constructor).subscribe(noop),
+        );
+    }
 }
 
 /**

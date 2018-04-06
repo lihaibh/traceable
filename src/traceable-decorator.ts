@@ -15,22 +15,16 @@ import { isArray } from 'util';
  */
 export function Traceable<STATE, ACTIONS extends Action>(options: TraceableOptions<STATE, ACTIONS> = {}): ClassDecorator {
     return <T extends Function>(target: T): T => {
-        const original = target;
+        const original_target = target;
 
         // TODO: force implementing ITraceable interface
         const traceable_impl: Function = options.implementation || StateTraceable.prototype.constructor;
 
-        // Check already decorated traceable in the prototype chain
-        // We want to make sure whether traceable functionality is already exists so we wont assign it twice
-        if (Reflect.hasMetadata(TRACEABLE_META_HOOK, target)) {
-            const decorated_base_name = Reflect.getMetadata(TRACEABLE_META_HOOK, target);
-            throw new Error(`The class ${target.name} already decorated with traceable decorator
-            by it's base class: ${decorated_base_name}`);
-        }
+        _validateTraceableMetadata(original_target);
 
         // Declare the new prototype
         function _Traceable(...args: any[]) {
-            original.apply(this, args);
+            original_target.apply(this, args);
 
             // Construct the traceable object using the traceable implementation
             traceable_impl.prototype.constructor.call(this);
@@ -39,33 +33,53 @@ export function Traceable<STATE, ACTIONS extends Action>(options: TraceableOptio
         }
 
         // Extends the original prototype
-        _Traceable.prototype = Object.create(original.prototype);
+        _Traceable.prototype = Object.create(original_target.prototype);
         _Traceable.prototype.constructor = _Traceable;
 
-        if (options.reduce) {
-            _Traceable.prototype.reduce = options.reduce;
-        } else if (!target.prototype.reduce) {
-            throw new Error('You must provide a reduce function to the traceable prototype');
-        } else {
-            // TODO: check metadata of reduce property to throw as soon as possible
-        }
+        _addPrototypeMethods(_Traceable.prototype, options);
 
-        if (options.initialize) {
-            _Traceable.prototype.initialize = options.initialize;
-        } else if (!target.prototype.initialize) {
-            throw new Error('You must provide an initialize function to the traceable prototype');
-        } else {
-            // TODO: check metadata of initialize to throw as soon as possible
-        }
-
-        // Add metadata to the new decorated prototype and annotate that it is traceable
-        Reflect.defineMetadata(TRACEABLE_META_HOOK, original.name, _Traceable);
+        _decoratePrototypeIsTraceable(_Traceable);
 
         // Make this class traceable by choosing an implementation
         _makeTraceable(_Traceable, traceable_impl);
 
         return _Traceable as any as T;
     };
+}
+
+function _validateTraceableMetadata(target) {
+    // Check already decorated traceable in the prototype chain
+    // We want to make sure whether traceable functionality is already exists so we wont assign it twice
+    if (Reflect.hasMetadata(TRACEABLE_META_HOOK, target)) {
+        const decorated_base_name = Reflect.getMetadata(TRACEABLE_META_HOOK, target);
+        throw new Error(`The class ${target.name} already decorated with traceable decorator
+            by it's base class: ${decorated_base_name}`);
+    }
+}
+
+function _addPrototypeMethods(traceable_prototype, options) {
+    const base_prototype = Object.getPrototypeOf(traceable_prototype);
+
+    if (options.reduce) {
+        traceable_prototype.reduce = options.reduce;
+    } else if (!base_prototype.reduce) {
+        throw new Error('You must provide a reduce function to the traceable prototype');
+    } else {
+        // TODO: check metadata of reduce property to throw as soon as possible
+    }
+
+    if (options.initialize) {
+        traceable_prototype.initialize = options.initialize;
+    } else if (!base_prototype.initialize) {
+        throw new Error('You must provide an initialize function to the traceable prototype');
+    } else {
+        // TODO: check metadata of initialize to throw as soon as possible
+    }
+}
+
+function _decoratePrototypeIsTraceable(traceable_constructor) {
+    // Add metadata to the new decorated prototype and annotate that it is traceable
+    Reflect.defineMetadata(TRACEABLE_META_HOOK, traceable_constructor.name, traceable_constructor);
 }
 
 function _makeTraceable(target: Function, traceable_impl: Function) {
