@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import 'reflect-metadata';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/toPromise';
