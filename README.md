@@ -18,7 +18,7 @@ npm i traceable-object
 Check out our pre maid [Examples](./examples) to get sense of how to use this library properly.
 
 using Traceable decorator:
-the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/types.ts)) so when an object of this prototype is created, you can track its changes.
+the Traceable decorator adds functionality to a class / prototype (check type [Traceable<STATE, ACTIONS>](./src/contracts/traceable.ts)) so when an object of this prototype is created, you can track its changes.
 
 in order to use decorators in Typescript you should enable experimentalDecorators compiler option in your tsconfig.json file like so:
 
