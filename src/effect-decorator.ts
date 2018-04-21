@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { EFFECTS_META_KEY, SUBSCRIPTIONS_META_KEY, TRACEABLE_META_HOOK } from '@lib/meta';
 import { chain, exists, has, isNotNil, isObservable, isPrototypeOf, prop } from '@lib/utils/common';
 import * as _ from 'lodash';
