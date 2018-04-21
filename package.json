@@ -77,7 +77,7 @@
     "nodejs"
   ],
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lihaibh/traceable.git"
@@ -97,5 +97,5 @@
     "test.watch": "npm test -- --watch",
     "webpack": "webpack"
   },
-  "types": "./dist/main.d.ts"
+  "types": "lib/index.d.ts"
 }
