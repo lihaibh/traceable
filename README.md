@@ -11,7 +11,7 @@ Please make sure you know what reactive programming means and you are familiar w
 Install our library:
 
 ```sh
-npm i traceable-object
+npm i trace-state
 ```
 
 ## Usage
