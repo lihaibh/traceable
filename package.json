@@ -1,5 +1,5 @@
 {
-  "name": "traceable",
+  "name": "trace-state",
   "description": "Trace a state of objects using event streams",
   "version": "1.0.0-alpha.1",
   "author": "Lihai Ben-Haim <lihaibh@gmail.com>",
