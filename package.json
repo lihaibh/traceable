@@ -77,14 +77,12 @@
     "nodejs"
   ],
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lihaibh/traceable.git"
   },
   "scripts": {
-    "build": "tsc",
-    "build.watch": "npm run build -- --watch",
     "commit": "git-cz",
     "commitlint": "commitlint",
     "commitmsg": "commitlint -e $GIT_PARAMS",
@@ -96,5 +94,5 @@
     "test.watch": "npm test -- --watch",
     "webpack": "webpack"
   },
-  "types": "lib/index.d.ts"
+  "types": "src/index.ts"
 }
