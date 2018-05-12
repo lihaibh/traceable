@@ -1,0 +1,10 @@
+coverage/
+.*/
+examples/
+src/**/_*.ts
+src/**/*.spec.ts
+src/__snapshots__/
+.*
+commitlint.config.js
+tslint.json
+yarn*
