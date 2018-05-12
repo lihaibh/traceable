@@ -1,7 +1,7 @@
 {
   "name": "trace-state",
   "description": "Trace a state of objects using event streams",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "author": "Lihai Ben-Haim <lihaibh@gmail.com>",
   "_moduleAliases": {
     "@lib": "./src"
