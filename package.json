@@ -88,7 +88,6 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "coverage": "npm test -- --coverage",
     "jest": "jest",
-    "prepublish": "npm run build",
     "test": "npm run jest -- --verbose",
     "test.inspect": "node --inspect-brk=0 ./node_modules/jest/bin/jest.js --no-cache --runInBand",
     "test.watch": "npm test -- --watch",
